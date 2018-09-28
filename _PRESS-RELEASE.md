@@ -18,27 +18,38 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
+Traveler's Briefings
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+For frequent traveler's that need key information at their finger tips - without the fluff.
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+We need airport and airline information, weather highlights, safety advisories, relevant current event summaries, and quick links to more details - and we need it in a clean, easy-to-navigate way. So we can get just the gist, with access to more if needed.
 
 ## Problem ##
   > Describe the problem your product solves.
+Travel information is everywhere, but it's scattered and usually presented as an information firehose.
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
+Traveler's Briefings provides access to the most important and most commonly referenced information at our finger tips, with quick links to learn more if needed.
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
+"Traveler's Briefings are smooth as a baby's butt."
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
+Just head over to <http://some-totally-ridiculous-mystic-heroku-pizza-thing.heroku.com> to get started now!
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+"I travel every week, and I can tell you that I don't leave for a trip without first checking my Traveler's Briefings. They give me everything I need, without slowing me down. I should know, I'm that annoying guy who talks to you during the entire flight while you sit there with your noise cancelling headphones!"
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
+Did you miss the part about "Briefings"? They're like, you know, "brief", so this the end. Click here and safe travels:  
+<http://some-totally-ridiculous-mystic-heroku-pizza-thing.heroku.com>
+
