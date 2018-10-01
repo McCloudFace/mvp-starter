@@ -5,10 +5,10 @@ var rp = require('request-promise');
 
 var app = express();
 
-// app.use(express.static(__dirname + '/../react-client/dist'));
-app.get('/', function (req, res) {
-  res.send('GET req to /');
-});
+app.use(express.static(__dirname + '/../client/dist'));
+// app.get('/', function (req, res) {
+//   res.send('GET req to /');
+// });
 
 let baseUrl = 'https://api.aviationdata.systems/v1/airport/';
 let options = {

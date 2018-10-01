@@ -1,10 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Item List</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Traveler's Briefings</title>
+  <meta name="description" content="For frequent traveler's that need key information at their finger tips - without the fluff.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
 </head>
-<body>
-<div id="app"></div>
-<script type="text/javascript" src="bundle.js"></script>
-</body>
+
+<body class="bg-light">
+
+    <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white">About</h4>
+              <p class="text-muted">We need airport and airline information, weather highlights, safety advisories,
+                relevant current event summaries, and quick links to more details - and we need it in a clean,
+                easy-to-navigate way. So we can get just the gist, with access to more if needed.</p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+              <h4 class="text-white">Contact</h4>
+              <ul class="list-unstyled">
+                <li><a href="#" class="text-white">Follow on Twitter</a></li>
+                <li><a href="#" class="text-white">Like on MySpace</a></li>
+                <li><a href="#" class="text-white">Tag on Google+</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg> -->
+            <strong>Traveler's Briefings</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main role="main" class="bg-light">
+
+      <section class="jumbotron text-center bg-light">
+        <div class="container bg-light">
+          <h1 class="jumbotron-heading">Do the search thing</h1>
+
+          <div id="app" class="bg-light"></div>
+
+        </div>
+      </section>
+
+      <!--<div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row"></div>
+        </div>
+      </div>-->
+
+    </main>
+
+    <footer class="text-muted bg-light">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p><a target="_blank" href="https://en.wikipedia.org/wiki/Minimum_viable_product">MVP</a>. A thing that does a
+          thing.</p>
+      </div>
+    </footer>
+
+    <script type="text/javascript" src="bundle.js"></script>
+
+    <!-- Bootstrap core JavaScript
+      ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/vendor/holder.min.js"></script>-->
+  </body>
+
 </html>
