@@ -12,9 +12,16 @@ app.post('/airport/name/:airport_name', function(req, res) {
   console.log('searchTerm: ', searchTerm);
   db.selectName(searchTerm, function(err, results) {
     if (err) {
-      console.error('err from db.selectName: ', err);
+      console.error('err from db.selectName', err);
     } else if (results) {
-      console.log('results from db.selectName: ', results);
+      console.log('Got results from db.selectName');
+      // TODO:
+      // call google maps api
+
+      // call dark sky api
+
+      // send (all) to client?
+      res.json(results);
     }
   });
 });

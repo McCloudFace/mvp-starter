@@ -41,7 +41,7 @@ class App extends React.Component {
       airport_name: searched
     })
       .then(res => {
-        console.log('axios post res: ', res);
+        console.log('axios post res.data: ', res.data);
       })
       .catch( err => {
         console.log('axios post err: ', err);

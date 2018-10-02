@@ -40,22 +40,21 @@ db.once('open', function () {
     keywords: String
   });
 
-  var airportinfo = mongoose.model('airportinfo', airportSchema);
+  var Airport = mongoose.model('Airport', airportSchema);
 
   var selectName = function (search, callback) {
-    // let nameLike = '/' + search + '/i';
+    let nameLike = new RegExp(search, 'i');
     // fields to return in this query
     let returnFields = 'id name latitude_deg longitude_deg iso_country iso_region';
-
-    airportinfo.find({
-      // find names "like" (that include) the search string
-      id: 3384
-    }, /* returnFields, */ function (err, docs) {
+    Airport.find({
+      // find names like the search string
+      name: nameLike
+    }, returnFields, function (err, docs) {
       if (err) {
-        console.error('selectName query error: ', err);
+        console.error('db.selectName query error: ', err);
         callback(err, null);
       } else {
-        console.log('selectName query docs: ', docs);
+        console.log('db.selectName docs query!');
         callback(null, docs);
       }
     });
