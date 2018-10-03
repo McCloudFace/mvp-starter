@@ -43,13 +43,14 @@ db.once('open', function () {
   var Airport = mongoose.model('Airport', airportSchema);
 
   var selectName = function (search, callback) {
+    // don't need an exact match w this
+    //  constructs /whatever/i
     let nameLike = new RegExp(search, 'i');
-    // fields to return in this query
-    let returnFields = 'id name latitude_deg longitude_deg iso_country iso_region';
+    // https://mongoosejs.com/docs/api.html#model_Model.find
     Airport.find({
-      // find names like the search string
+      // find names like the search string, case insensitive
       name: nameLike
-    }, returnFields, function (err, docs) {
+    }, function (err, docs) {
       if (err) {
         console.error('db.selectName query error: ', err);
         callback(err, null);

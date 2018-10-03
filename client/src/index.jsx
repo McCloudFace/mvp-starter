@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Search from './components/Search';
+import SearchResults from './components/SearchResults';
+import SearchDetail from './components/SearchDetail';
 import './style.css';
 
 class App extends React.Component {
@@ -9,7 +11,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       searchTermName: '',
-      searchTermIata: ''
+      searchTermIata: '',
+      airportData: []
     };
   }
 
@@ -18,7 +21,8 @@ class App extends React.Component {
   }
 
   handleNameChange(e) {
-    this.setState({ searchTermName: e.target.value });
+    var decoded = decodeURI(e.target.value);
+    this.setState({ searchTermName: decoded });
   }
 
   handleIataChange(e) {
@@ -29,10 +33,9 @@ class App extends React.Component {
     e.preventDefault();
     if (this.state.searchTermName !== '') {
       var searched = this.state.searchTermName;
-      console.log('searched: ', searched);
       var postUrl = 'http://localhost:3000/airport/name/' + searched;
-      console.log('postUrl', postUrl);
     } else {
+      // when I add searching by IATA code @backlog
       var searched = this.state.searchTermIata;
       var postUrl = 'http://localhost:3000/airport/iata/' + searched;
     }
@@ -41,23 +44,40 @@ class App extends React.Component {
       airport_name: searched
     })
       .then(res => {
-        console.log('axios post res.data: ', res.data);
+        var airportInfo = res.data;
+        // console.log('axios post res.data: ', res.data);
+        this.setState({ airportData: airportInfo });
       })
-      .catch( err => {
+      .catch(err => {
         console.log('axios post err: ', err);
       });
   }
 
   render() {
-    return (
-      <div>
-        <Search
-          handleNameChange={this.handleNameChange.bind(this)}
-          handleIataChange={this.handleIataChange.bind(this)}
-          searchTerm={this.state}
-          handleSubmit={this.handleSubmit.bind(this)}
-        />
-      </div>);
+    if (this.state.airportData.length === 0) {
+      return (
+        <div>
+          <Search
+            handleNameChange={this.handleNameChange.bind(this)}
+            handleIataChange={this.handleIataChange.bind(this)}
+            searchTerm={this.state}
+            handleSubmit={this.handleSubmit.bind(this)}
+          />
+        </div>);
+    } else if (this.state.airportData.length === 1) {
+      console.log('this.state.airportData[0]: ', this.state.airportData[0]);
+      return (
+        <div>
+          <SearchDetail detail={this.state.airportData[0]} />
+        </div>
+      );
+    } else if (this.state.airportData.length > 1) {
+      return (
+        <div>
+          <SearchResults results={this.state.airportData} />
+        </div>
+      );
+    }
   }
 }
 
