@@ -4,7 +4,7 @@ const SearchResults = (props) => {
 
   var airportResults = props.results.map( (airport, index) => {
     return (
-      <div key={index} className="card mb-4 shadow-sm" onClick={() => props.handleSelect(airport)}>
+      <div key={index} className="card mb-4 cardshadow" onClick={() => props.handleSelect(airport)}>
         <div className="card-header">
           <h4 className="my-0 font-weight-normal"></h4>
         </div>

@@ -26,6 +26,21 @@
   min-width: 220px;
 }
 
+.cardshadow {
+  box-shadow: 5px 5px 5px #ddd !important;
+}
+
+.cardshadow:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px 5px #ccc !important;
+}
+
+.cardshadow:active {
+  cursor: pointer;
+  box-shadow: 5px 5px 5px #f8f9fa !important;
+  margin-top: -2px;
+}
+
 @media (min-width: 768px) {
   .jumbotron {
     padding-top: calc(var(--jumbotron-padding-y) * 2);
