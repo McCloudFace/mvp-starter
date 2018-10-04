@@ -2,9 +2,9 @@ import React from 'react';
 
 const SearchResults = (props) => {
 
-  var airportResults = props.results.map(airport => {
+  var airportResults = props.results.map( (airport, index) => {
     return (
-      <div className="card mb-4 shadow-sm">
+      <div key={index} className="card mb-4 shadow-sm" onClick={() => props.handleSelect(airport)}>
         <div className="card-header">
           <h4 className="my-0 font-weight-normal"></h4>
         </div>
@@ -21,7 +21,7 @@ const SearchResults = (props) => {
   return (
     <div className="searchResults">
       <div className="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto">
-        <p className="lead">Click the link for the aiport and area Travel Briefing you need.</p>
+        <p className="lead">Click the card for the airport and area Travel Briefing you need.</p>
       </div>
 
       <div className="container">

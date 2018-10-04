@@ -53,6 +53,12 @@ class App extends React.Component {
       });
   }
 
+  handleSelect(airport) {
+    let objArr = [];
+    objArr.push(airport);
+    this.setState({ airportData: objArr });
+  }
+
   render() {
     if (this.state.airportData.length === 0) {
       return (
@@ -65,7 +71,6 @@ class App extends React.Component {
           />
         </div>);
     } else if (this.state.airportData.length === 1) {
-      console.log('this.state.airportData[0]: ', this.state.airportData[0]);
       return (
         <div>
           <SearchDetail detail={this.state.airportData[0]} />
@@ -74,7 +79,10 @@ class App extends React.Component {
     } else if (this.state.airportData.length > 1) {
       return (
         <div>
-          <SearchResults results={this.state.airportData} />
+          <SearchResults
+            results={this.state.airportData}
+            handleSelect={this.handleSelect.bind(this)}
+          />
         </div>
       );
     }
