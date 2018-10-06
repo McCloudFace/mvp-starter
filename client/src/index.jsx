@@ -14,7 +14,9 @@ class App extends React.Component {
       searchTermIata: '',
       airportData: [],
       weatherData: {},
-      haveWeatherData: false
+      haveWeatherData: false,
+      stateDeptData: [],
+      haveStateDeptData: false
     };
   }
 
@@ -38,10 +40,21 @@ class App extends React.Component {
     })
       .then(res => {
         this.setState( { weatherData: res.data, haveWeatherData: true });
-        console.log('in getWeather, weatherData is: ', this.state.weatherData);
       })
       .catch(err => {
         console.log('getWeather axios post err: ', err);
+      });
+  }
+
+  getFacts(country) {
+    let stateDeptUrl = 'https://www.state.gov/api/v1/?command=get_country_fact_sheets&fields=id,title,content_url,full_url&terms=' + country;
+    axios.get(stateDeptUrl)
+      .then(res => {
+        this.setState({ stateDeptData: res.country_fact_sheets, haveStateDeptData: true });
+        console.log('stateDept res: ', res);
+      })
+      .catch(err => {
+        console.error('getFacts axios err: ', err);
       });
   }
 
@@ -63,6 +76,9 @@ class App extends React.Component {
         var airportInfo = res.data;
         console.log('airportInfo: ', airportInfo);
         this.setState({ airportData: airportInfo });
+        if (airportInfo.length === 1 ) {
+          this.getWeather(airportInfo[0].latitude_deg, airportInfo[0].longitude_deg);
+        }
 
       })
       .catch(err => {
@@ -72,6 +88,7 @@ class App extends React.Component {
 
   handleSelect(airport) {
     this.getWeather(airport.latitude_deg, airport.longitude_deg);
+    this.getFacts(airport.iso_country);
     let objArr = [];
     objArr.push(airport);
     this.setState({ airportData: objArr });
@@ -95,6 +112,7 @@ class App extends React.Component {
             detail={this.state.airportData[0]}
             weather={this.state.weatherData}
             haveWeather={this.state.haveWeatherData}
+            haveStateDept={this.state.haveStateDeptData}
           />
         </div>
       );
