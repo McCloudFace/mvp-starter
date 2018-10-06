@@ -12,7 +12,9 @@ class App extends React.Component {
     this.state = {
       searchTermName: '',
       searchTermIata: '',
-      airportData: []
+      airportData: [],
+      weatherData: {},
+      haveWeatherData: false
     };
   }
 
@@ -27,6 +29,20 @@ class App extends React.Component {
 
   handleIataChange(e) {
     this.setState({ searchTermIata: e.target.value });
+  }
+
+  getWeather(latitude, longitude) {
+    axios.post('http://localhost:3000/weather/forecast', {
+      lat: latitude,
+      long: longitude
+    })
+      .then(res => {
+        this.setState( { weatherData: res.data, haveWeatherData: true });
+        console.log('in getWeather, weatherData is: ', this.state.weatherData);
+      })
+      .catch(err => {
+        console.log('getWeather axios post err: ', err);
+      });
   }
 
   handleSubmit(e) {
@@ -45,8 +61,9 @@ class App extends React.Component {
     })
       .then(res => {
         var airportInfo = res.data;
-        // console.log('axios post res.data: ', res.data);
+        console.log('airportInfo: ', airportInfo);
         this.setState({ airportData: airportInfo });
+
       })
       .catch(err => {
         console.log('axios post err: ', err);
@@ -54,6 +71,7 @@ class App extends React.Component {
   }
 
   handleSelect(airport) {
+    this.getWeather(airport.latitude_deg, airport.longitude_deg);
     let objArr = [];
     objArr.push(airport);
     this.setState({ airportData: objArr });
@@ -73,7 +91,11 @@ class App extends React.Component {
     } else if (this.state.airportData.length === 1) {
       return (
         <div>
-          <SearchDetail detail={this.state.airportData[0]} />
+          <SearchDetail
+            detail={this.state.airportData[0]}
+            weather={this.state.weatherData}
+            haveWeather={this.state.haveWeatherData}
+          />
         </div>
       );
     } else if (this.state.airportData.length > 1) {

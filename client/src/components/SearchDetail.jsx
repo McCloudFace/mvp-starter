@@ -31,14 +31,23 @@ const SearchDetail = (props) => {
             <iframe width="580" height="350" frameBorder="0" src={googUrl} />
           </div>
 
-          {/* TODO
-              Dark Sky key needs to be on server, not client
-              Client sends req to server, server make api call & responds
-              Client renders weather component in SearchDetail
-              <div id="weather">
-                <p>Weather <a href="https://darksky.net/poweredby/">powered by Dark Sky</a></p>
-              </div>
-            */
+          {console.log('props.weather: ', props.weather)}
+
+          {props.haveWeather &&
+            ( <div>
+              <h3 className="display-5">Current Weather</h3>
+              <ul className="list-group text-left">
+                <li className="list-group-item">Temperature: {props.weather.currently.temperature} degrees</li>
+                <li className="list-group-item">Humidity: {props.weather.currently.humidity}</li>
+                <li className="list-group-item">Wind speed: {props.weather.currently.windSpeed} mph</li>
+                <li className="list-group-item">Visibility: {props.weather.currently.visibility}</li>
+                <li className="list-group-item">UV Index: {props.weather.currently.uvIndex}</li>
+              </ul>
+              <h3 className="display-5">Forecast</h3>
+              <ul className="list-group text-left">
+                <li className="list-group-item">Summary: {props.weather.daily.summary}</li>
+              </ul>
+            </div>)
           }
 
         </div>
